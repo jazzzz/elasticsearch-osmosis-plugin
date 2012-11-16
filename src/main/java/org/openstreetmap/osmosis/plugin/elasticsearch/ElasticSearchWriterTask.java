@@ -1,5 +1,6 @@
 package org.openstreetmap.osmosis.plugin.elasticsearch;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,7 @@ public class ElasticSearchWriterTask implements Sink {
 
 	private static final Logger LOG = Logger.getLogger(ElasticSearchWriterTask.class.getName());
 
-	private int boundProcessedCounter = 0;
+    private int boundProcessedCounter = 0;
 	private int nodeProcessedCounter = 0;
 	private int wayProcessedCounter = 0;
 	private int relationProcessedCounter = 0;
@@ -34,6 +35,11 @@ public class ElasticSearchWriterTask implements Sink {
 		this.entityDao = entityDao;
 		this.specIndexes = specIndexes;
 	}
+
+    @Override
+    public void initialize( final Map<String, Object> stringObjectMap )
+    {
+    }
 
 	@Override
 	public void process(EntityContainer entityContainer) {
